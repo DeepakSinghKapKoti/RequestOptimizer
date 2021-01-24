@@ -21,7 +21,7 @@ public class RequestRun implements Callable<String>  {
     }
 
     public String getResponsePlainJSON() {
-    	System.out.println("Executing get Call");
+    	System.out.println("Executing get Call "+ key);
         String url = "https://httpbin.org/"+this.key;
         String result = null;
         try {
