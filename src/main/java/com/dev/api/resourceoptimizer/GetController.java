@@ -8,6 +8,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/***
+ * 
+ * @author Deepak Singh Kapkoti
+ *
+ */
+
 @RestController
 @RequestMapping("/api")
 public class GetController {
@@ -23,5 +29,16 @@ public class GetController {
 		
 		
 	}
+	
+	@GetMapping("/")
+	public String welcome() {
+		
+		
+		return "Hi & Wellcome";
+		
+		
+	}
+	
+	
 
 }

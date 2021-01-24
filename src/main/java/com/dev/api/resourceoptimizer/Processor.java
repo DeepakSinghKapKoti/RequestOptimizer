@@ -11,6 +11,12 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+/***
+ * 
+ * @author Deepak Singh Kapkoti
+ *
+ */
+
 @Service
 public class Processor {
 

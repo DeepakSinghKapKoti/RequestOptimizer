@@ -9,6 +9,11 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 
+/***
+ * 
+ * @author Deepak Singh Kapkoti
+ *
+ */
 public class RequestRun implements Callable<String>  {
 	
 	private final RestTemplate restTemplate;
