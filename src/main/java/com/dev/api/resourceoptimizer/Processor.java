@@ -37,26 +37,25 @@ public class Processor {
 			}
 			System.out.println(key + " is completed");
 			waitings.remove(key);
-			try {
-				value = runList.get(i).get();
+			
+				try {
+					value = runList.get(i).get();
+				} catch (InterruptedException | ExecutionException e) {
+					// TODO Auto-generated catch block
+					//e.printStackTrace();
+					value = e.getMessage();
+				}
 				if (!waitings.contains(key)) {
 					keyList.remove(key);
 					runList.remove(runList.get(i));
 				}
 
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ExecutionException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-
-			}
+			
 
 		} else {
 			keyList.add(key);
 
-			try {
+			
 				RequestRun run = new RequestRun(this.restTemplate, key);
 
 				Future<String> future = executor.submit(run);
@@ -72,7 +71,13 @@ public class Processor {
 					}
 
 				} else if (future.isDone()) {
-					value = future.get();
+					try {
+						value = future.get();
+					} catch (InterruptedException | ExecutionException e) {
+						// TODO Auto-generated catch block
+						//e.printStackTrace();
+						value = e.getMessage();
+					}
 					if (!waitings.contains(key)) {
 						keyList.remove(key);
 						runList.remove(future);
@@ -80,14 +85,10 @@ public class Processor {
 
 				}
 
-			} catch (InterruptedException | ExecutionException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		
 		}
 
-		System.out.println(runList + " is completed");
-		System.out.println(keyList + " is completed");
+		
 		return value;
 	}
 
